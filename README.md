@@ -64,19 +64,6 @@ fastp -i <forward_read>_R1.fastq.gz -I <reverse_read>_R2.fastq.gz \
 ```
 At the end, trimmed.fq.gz files will be generated, which will be used in **step 3.** Additionally, an **html report** will be generated, which contains general information of the reads, before and after statistics, and filtering results.
 
-## Additional: Running jobs on SLURM
-Job scripts that are going to be run on HPC can be prepared and run as the following:
-
-```
-touch <example_script>.sh #create a blank text file
-
-nano <example_script>.sh #open the blank file, copy-paste and modify the script
-
-sbatch <example_script>.sh #submit the script to the cluster
-```
-
-If configured right, the script will be queued in the cluster, and information mail(s) will be sent to the configured mail adress.
-
 ## Step 2: Build STAR index (on HPC)
 
 A genome index is needed to be generated (only once) so that STAR can utilize it during the alignment/mapping (next) step. A reference genome sequence file (FASTA) and an annotation file (GTF) are required installed.
@@ -89,8 +76,6 @@ A genome index is needed to be generated (only once) so that STAR can utilize it
 #SBATCH --partition=mid # CHECK AVAILABILITY
 #SBATCH --time=10:00:00
 #SBATCH --output=star_index.log
-#SBATCH --mail-user=example@mail.com # CONFIGURE MAIL
-#SBATCH --mail-type=ALL
 
 ### CONFIGURE THESE LINES ###
 
@@ -112,8 +97,6 @@ STAR \
   --sjdbOverhang 100 # This value must be set to ReadLength - 1
 ```
 A star genome directory (~30 GB) will be generated, which contains necessary information of the genome and annotations. It can be used for other analyses with the same genome reference and annotation.
-
-By following the **additional step** above, one can run this STAR step as the following:
 
 ```
 touch star_index.sh #create a blank text file
@@ -138,8 +121,6 @@ STAR genome directory, the annotation file, and the input directory containing t
 #SBATCH --partition=mid # CHECK AVAILABILITY
 #SBATCH --time=20:00:00
 #SBATCH --output=star_cnt_batch.log
-#SBATCH --mail-user=example@mail.com # CONFIGURE MAIL
-#SBATCH --mail-type=ALL
 
 ### CONFIGURE THESE LINES ###
 
@@ -188,8 +169,6 @@ The exact assembly genome file (FASTA) and annotation file (GTF) should be used 
 #SBATCH --partition=mid # CHECK AVAILABILITY
 #SBATCH --time=20:00:00
 #SBATCH --output=rsem_ref_build.log
-#SBATCH --mail-user=example@mail.com # CONFIGURE MAIL
-#SBATCH --mail-type=ALL
 
 ### CONFIGURE THESE LINES ###
 
@@ -228,8 +207,6 @@ The directory containing STAR output files, the generated RSEM reference directo
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --mem=100G
-#SBATCH --mail-user=example@mail.com # CONFIGURE MAIL
-#SBATCH --mail-type=ALL
 
 ### CONFIGURE THESE LINES ###
 
