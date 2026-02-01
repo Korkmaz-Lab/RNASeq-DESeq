@@ -3,19 +3,19 @@ A workflow for analysis of paired-end RNA-seq data and differential gene express
 
 ## Requirements
 
-* **fastp**
+* **fastp** v1.0.1
 
     * GitHub Repo: https://github.com/OpenGene/fastp
 
     * Anaconda Download: https://anaconda.org/bioconda/fastp
 
-* **STAR**
+* **STAR** v2.7.11b
 
     * GitHub Repo: https://github.com/alexdobin/STAR/tree/master
 
     * Anaconda Download: https://anaconda.org/bioconda/star
 
-* **RSEM**
+* **RSEM** v1.3.1
 
     * GitHub Repo: https://github.com/deweylab/RSEM
     * Installation Tutorial: https://github.com/bli25/RSEM_tutorial
