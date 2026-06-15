@@ -87,4 +87,8 @@ RSEM will generate result files with (.genes.results) extension, which are neede
 
 
 ## Step 6: Differential Expression Analysis with DESeq2 on local R
-
+The RSEM .genes.results files from the previous step are loaded into R and merged into a single count matrix. Sample metadata (culture condition, cell line) is read from a separate file and used to set up a paired experimental design.
+A DESeq2 object is constructed with a design that accounts for the actual experiment design. Low-count genes are filtered out before running the differential expression analysis. Results undergo log fold-change shrinkage for more reliable estimates.
+Significant genes are selected based on adjusted p-value and fold-change thresholds, and a variance-stabilized expression matrix is exported for potential downstream use.
+A paired t-test confirms whether the score separates the two conditions, and results are saved alongside a paired boxplot visualization.
+Finally, a PCA plot and a heatmap of the top differentially expressed genes are generated to assess overall sample clustering and expression patterns across conditions.
