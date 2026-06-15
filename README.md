@@ -14,19 +14,19 @@ The pipeline uses **SLURM HPC** for alignment & quantification and **local R** f
 
 ## Requirements
 
-* **fastp** v1.0.1
+* **fastp**
 
     * GitHub Repo: https://github.com/OpenGene/fastp
 
     * Anaconda Download: https://anaconda.org/bioconda/fastp
 
-* **STAR** v2.7.11b
+* **STAR**
 
     * GitHub Repo: https://github.com/alexdobin/STAR/tree/master
 
     * Anaconda Download: https://anaconda.org/bioconda/star
 
-* **RSEM** v1.3.1
+* **RSEM**
 
     * GitHub Repo: https://github.com/deweylab/RSEM
     * Installation Tutorial: https://github.com/bli25/RSEM_tutorial
@@ -83,7 +83,7 @@ The exact assembly genome (FASTA) and annotation files (GTF) that were used duri
 The directory containing STAR output files, the generated RSEM reference directory, and RSEM bin directory containing the RSEM scripts (under software directory) should be specified. Sample names/types should also be specified.
 
 
-RSEM will generate result files with (.genes.results) extension, which are needed for differential expression analysis in R with the code below.
+RSEM will generate result files with (.genes.results) extension, which are needed for differential expression analysis in R in the next step.
 
 
 ## Step 6: Differential Expression Analysis with DESeq2 on local R
